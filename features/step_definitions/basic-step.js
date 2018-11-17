@@ -5,7 +5,7 @@ Given('I visit the site' , async function() {
 })
 
 Then('I should see {string}', async function(string) {
-    return pending
+    await this.pageHasSelectedContent(string)
 })
 
 After(async function() {

@@ -16,6 +16,13 @@ class RPSWorld{
     async closeHomePage() {
         await this.browser.close()
     }
+
+    async pageHasSelectedContent(content) {
+        const pageContent = await this.page.content()
+        const actualContent = pageContent.match(content)[0]
+
+        expect(content).to.be.eq(actualContent)
+    }
 }
 
 setWorldConstructor(RPSWorld)
