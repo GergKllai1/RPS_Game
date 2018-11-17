@@ -1,0 +1,14 @@
+{
+  "name": "rps",
+  "version": "1.0.0",
+  "description": "Rock Paper Scissor application",
+  "main": "index.js",
+  "author": "Gregory Kallai <gerg.kallai@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cucumber": "^5.0.2",
+    "puppeteer": "^1.10.0",
+    "superstatic": "^6.0.3"
+  }
+}
