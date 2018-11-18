@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("\n\nvar rockPaperScissor = document.addEventListener('DOMContentLoaded', function () {\n    var rock = document.getElementById('rock');\n    var paper = document.getElementById('paper');\n    var scissor = document.getElementById('scissor');\n    var ai = document.getElementById('ai');\n    var choice = document.getElementById('choice');\n    var result = document.getElementById('result');\n    var test = document.getElementById('testbutton');\n    var randomizer = function randomizer() {\n        var random = 0;\n        random = Math.floor(Math.random() * 3);\n        if (random === 0) {\n            ai.innerHTML = \"Rock\";\n        } else if (random === 1) {\n            ai.innerHTML = \"Paper\";\n        } else {\n            ai.innerHTML = \"Scissor\";\n        }\n    };\n    test.addEventListener('click', function () {\n        randomizer();\n    });\n});\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ })
 
