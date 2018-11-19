@@ -9,3 +9,4 @@ Feature: Play Rock-paper-scissor against an AI
    Then I should see "Rock"
    And I should see "Paper"
    And I should see "Scissor"
+   When I click "rock" I should see under choice "Rock"

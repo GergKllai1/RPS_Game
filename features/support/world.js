@@ -8,7 +8,7 @@ class RPSWorld{
     constructor() {}
 
     async openHomePage() {
-        this.browser = await puppeteer.launch({headless: false, slowmo: 100})
+        this.browser = await puppeteer.launch({headless: false, slowmo: 300})
         this.page = await this.browser.newPage()
         await this.page.goto(HOME_PAGE)
     }
@@ -23,6 +23,13 @@ class RPSWorld{
 
         expect(content).to.be.eq(actualContent)
     }
+
+    async selectItem(selection, outcome){
+        await this.page.click(`#${selection}`)
+        let chosen = await this.page.$('#choice')
+        const text = await this.page.evaluate(chosen => chosen.textContent, chosen)
+        expect(text).to.be.eq(outcome)
+    }     
 }
 
 setWorldConstructor(RPSWorld)
