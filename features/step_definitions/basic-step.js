@@ -14,4 +14,12 @@ After(async function() {
 
 When('I click {string} I should see under choice {string}', async function(string, string2){
     return await this.selectItem(string, string2)
-})
+});
+
+When('I click {string} I should see the results', async function(string) {
+    return await this.theResult(string)
+  });
+
+When('{string} should be either {string} {string} or {string}', async function (ai,rock,paper,scissor) {
+    return await this.aiChosen(ai, rock, paper, scissor)
+  });

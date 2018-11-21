@@ -25,11 +25,48 @@ class RPSWorld{
     }
 
     async selectItem(selection, outcome){
-        await this.page.click(`#${selection}`)
+        const inputSelector = `#${selection}`
+        await this.page.click(inputSelector.toLowerCase())
         let chosen = await this.page.$('#choice')
         const text = await this.page.evaluate(chosen => chosen.textContent, chosen)
         expect(text).to.be.eq(outcome)
-    }     
+    }
+    
+    game(human,ai){
+        if(human === ai){
+            return 'The game is a tie'
+        } else if(human === 'Rock' && ai === 'Scissor'){
+            return 'You have won'
+        } else if(human === 'Scissor' && ai === 'Paper'){
+            return  'You have won'
+        } else if(human === 'Paper' && ai === 'Rock'){
+            return 'You have won'
+        } else {
+            return 'You have lost'
+        }
+    }
+
+    async aiChosen(ai,rock,paper,scissor){
+        const inputSelector = `#${ai}`
+        let chosen = await this.page.$(inputSelector.toLowerCase())
+        let text = await this.page.evaluate(chosen => chosen.textContent, chosen)
+        expect(text).to.be.eq(rock || paper || scissor)
+    }
+
+    async theResult(choice){
+        const inputSelector = `#${choice}`
+        await this.page.click(inputSelector.toLocaleLowerCase())
+        const humanChoice = await this.page.$('#choice')
+        const aiChoice = await this.page.$('#ai')
+        const results = await this.page.$('#result')
+        const actualResults = await this.page.evaluate(results => results.textContent, results)
+        const human = await this.page.evaluate(humanChoice => humanChoice.textContent, humanChoice)
+        const ai = await this.page.evaluate(aiChoice => aiChoice.textContent, aiChoice)
+        const expectedResults = this.game(human, ai) 
+
+        expect(expectedResults).to.be.eq(actualResults)
+    }
+
 }
 
 setWorldConstructor(RPSWorld)
