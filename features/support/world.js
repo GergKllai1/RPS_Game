@@ -47,10 +47,11 @@ class RPSWorld{
     }
 
     async aiChosen(ai,rock,paper,scissor){
+        const possibilites = [rock, paper, scissor]
         const inputSelector = `#${ai}`
         let chosen = await this.page.$(inputSelector.toLowerCase())
         let text = await this.page.evaluate(chosen => chosen.textContent, chosen)
-        expect(text).to.be.eq(rock || paper || scissor)
+        expect(possibilites).to.include(text)
     }
 
     async theResult(choice){
