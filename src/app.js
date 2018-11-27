@@ -9,11 +9,11 @@ const rockPaperScissor = document.addEventListener('DOMContentLoaded', () => {
         let random = 0
         random = Math.floor(Math.random()*3)
         if(random === 0){
-            ai.innerHTML = "Rock"
+            ai.innerHTML = "<img src='images/rock.jpeg' alt='no image'>"
         }else if(random === 1){
-            ai.innerHTML = "Paper"
+            ai.innerHTML = "<img src='images/paper.jpg' alt='no image'>"
         }else{
-            ai.innerHTML = "Scissors"
+            ai.innerHTML = "<img src='images/scissors.jpg' alt='no image'>"
         }
     };
     const evaluate = () => {
