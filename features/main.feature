@@ -11,6 +11,6 @@ Feature: Play Rock-paper-scissor against an AI
    And I should see "Scissor"
    When I click "Rock" I should see under choice "Rock"
    When I click "Paper" I should see under choice "Paper"
-   When I click "Scissor" I should see under choice "Scissor"
+   When I click "Scissors" I should see under choice "Scissors"
    When I click "Rock" I should see the results
    And "ai" should be either "Rock" "Paper" or "Scissor"
