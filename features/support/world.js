@@ -30,6 +30,7 @@ class RPSWorld{
         let chosen = await this.page.$('#choice')
         const text = await this.page.evaluate(chosen => chosen.textContent, chosen)
         expect(text).to.be.eq(outcome)
+        
     }
     
     game(human,ai){

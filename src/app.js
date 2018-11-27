@@ -2,18 +2,20 @@ const rockPaperScissor = document.addEventListener('DOMContentLoaded', () => {
     const rock = document.getElementById('rock');
     const paper = document.getElementById('paper');
     const scissors = document.getElementById('scissors');
-    let ai = document.getElementById('ai');
+    let computer = document.getElementById('computer');
     let choice = document.getElementById('choice');
     let result = document.getElementById('result');
+    let humanscore = document.getElementById('humanscore');
+    let computerscore = document.getElementById('computerscore');
     let random = 0;
     const randomizer = () => {
         random = Math.floor(Math.random()*3)
         if(random === 0){
-            ai.innerHTML = "<img src='images/rock.jpeg' alt='no image'>"
+            computer.innerHTML = "<img src='images/rock.jpeg' alt='no image'>"
         }else if(random === 1){
-            ai.innerHTML = "<img src='images/paper.jpg' alt='no image'>"
+            computer.innerHTML = "<img src='images/paper.jpg' alt='no image'>"
         }else{
-            ai.innerHTML = "<img src='images/scissors.jpg' alt='no image'>"
+            computer.innerHTML = "<img src='images/scissors.jpg' alt='no image'>"
         }
     };
     const evaluate = () => {
@@ -29,19 +31,33 @@ const rockPaperScissor = document.addEventListener('DOMContentLoaded', () => {
             result.innerHTML = 'You have lost'
         }
     };
+    const addToScore = () =>{
+        if(result.innerHTML === 'You have won'){
+            let points = parseInt(humanscore.innerHTML)
+            points += 1
+            humanscore.innerHTML = points
+        }else if(result.innerHTML === 'You have lost'){
+            let points = parseInt(computerscore.innerHTML)
+            points += 1
+            computerscore.innerHTML = points
+        }
+    }
     rock.addEventListener('click', () => {
         randomizer();
-        choice = 0
-        evaluate()
+        choice = 0;
+        evaluate();
+        addToScore()
     });
     paper.addEventListener('click', () => {
         randomizer();
-        choice = 1
-        evaluate()
+        choice = 1;
+        evaluate();
+        addToScore()
     });
     scissors.addEventListener('click', () => {
         randomizer();
-        choice = 2
-        evaluate()
+        choice = 2;
+        evaluate();
+        addToScore()
     });
 })
