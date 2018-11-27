@@ -5,8 +5,8 @@ const rockPaperScissor = document.addEventListener('DOMContentLoaded', () => {
     let ai = document.getElementById('ai');
     let choice = document.getElementById('choice');
     let result = document.getElementById('result');
+    let random = 0;
     const randomizer = () => {
-        let random = 0
         random = Math.floor(Math.random()*3)
         if(random === 0){
             ai.innerHTML = "<img src='images/rock.jpeg' alt='no image'>"
@@ -17,13 +17,13 @@ const rockPaperScissor = document.addEventListener('DOMContentLoaded', () => {
         }
     };
     const evaluate = () => {
-        if(choice.innerHTML === ai.innerHTML){
+        if(choice === random){
             result.innerHTML = 'The game is a tie'
-        } else if(choice.innerHTML === 'Rock' && ai.innerHTML === 'Scissors'){
+        } else if(choice === 0 && random === 2){
             result.innerHTML = 'You have won'
-        } else if(choice.innerHTML === 'Scissors' && ai.innerHTML === 'Paper'){
+        } else if(choice === 2 && random === 1){
             result.innerHTML = 'You have won'
-        } else if(choice.innerHTML === 'Paper' && ai.innerHTML === 'Rock'){
+        } else if(choice === 1 && random === 0){
             result.innerHTML = 'You have won'
         } else{
             result.innerHTML = 'You have lost'
@@ -31,17 +31,17 @@ const rockPaperScissor = document.addEventListener('DOMContentLoaded', () => {
     };
     rock.addEventListener('click', () => {
         randomizer();
-        choice.innerHTML = "Rock"
+        choice = 0
         evaluate()
     });
     paper.addEventListener('click', () => {
         randomizer();
-        choice.innerHTML = "Paper"
+        choice = 1
         evaluate()
     });
     scissors.addEventListener('click', () => {
         randomizer();
-        choice.innerHTML = "Scissors"
+        choice = 2
         evaluate()
     });
 })
