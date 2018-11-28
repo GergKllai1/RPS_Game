@@ -1,6 +1,9 @@
 const { setWorldConstructor } = require('cucumber')
 const { expect } = require('chai')
 const puppeteer = require('puppeteer')
+const rock = 0
+const paper = 1
+const scissors = 2
 
 const HOME_PAGE = 'http://localhost:3000'
 
@@ -17,20 +20,10 @@ class RPSWorld{
         await this.browser.close()
     }
 
-    async pageHasSelectedContent(content) {
-        const pageContent = await this.page.content()
-        const actualContent = pageContent.match(content)[0]
-
-        expect(content).to.be.eq(actualContent)
-    }
-
     async selectItem(selection, outcome){
-        const inputSelector = `#${selection}`
-        await this.page.click(inputSelector.toLowerCase())
-        let chosen = await this.page.$('#choice')
-        const text = await this.page.evaluate(chosen => chosen.textContent, chosen)
-        expect(text).to.be.eq(outcome)
-        
+        const choice = `#${selection}`
+        await this.page.evaluate(choise => choice.textContent, choice)
+        expect(choice).to.be.eq(`#${outcome}`)
     }
     
     game(human,ai){
