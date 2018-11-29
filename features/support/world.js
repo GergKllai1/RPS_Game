@@ -21,24 +21,28 @@ class RPSWorld{
         const choice = `#${selection}`
         await this.page.evaluate(choise => choice.textContent, choice)
         expect(choice).to.be.eq(`#${outcome}`)
+    };
+
+    async clickOn(choice){
+        const inputSelector = `#${choice}`
+        await this.page.click(inputSelector)
     }
     
 
     async theResult(){
-        const computerrock = this.page.$('#computerrock')
-        const computerpaper = this.page.$('#computerpaper')
-        const computerscissors = this.page.$('#computerscissors')
-        const choice = '#result'
-        const result = await this.page.evaluate(choice => choice.textContent, choice)
-        if(computerrock === {}){
-            expect(result).to.be.eq('The game is a tie')
-        }else if(computerpaper === {}){
-            expect(result).to.be.eq('You have lost')
-        }if(computerscissors === {}){
-            expect(result).to.be.eq('You have won')
-        }
+        const computerrock = await this.page.$('#computerrock')
+        const computerpaper = await this.page.$('#computerpaper')
+        const computerscissors = await this.page.$('#computerscissors')
+        const choice = await this.page.$('#result')
+        const results = await this.page.evaluate(choice => choice.textContent, choice)
+        if(computerrock !== null){
+            expect(results).to.be.eq('The game is a tie')
+        }else if(computerpaper !== null){
+            expect(results).to.be.eq('You have lost')
+        }else if(computerscissors !== null){
+            expect(results).to.be.eq('You have won')
+        } 
     }
-
 }
 
 setWorldConstructor(RPSWorld)

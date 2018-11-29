@@ -8,5 +8,5 @@ Feature: User has a computer oponent
         Given I visit the site
 
     Scenario: When user chooses, the computer should choose
-        When I click 'Rock'
+        When I click 'rock'
         Then I should see the results

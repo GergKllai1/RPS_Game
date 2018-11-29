@@ -8,8 +8,8 @@ When('I click {string} I should see under choice {string}', async function(choic
     return await this.selectItem(choice, chosen)
 });
 
-When('I click {string}', async function(string) {
-
+When('I click {string}', async function(choice) {
+    return await this.clickOn(choice)
 });
 
 Then('I should see the results', async function () {
