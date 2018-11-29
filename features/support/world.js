@@ -23,34 +23,20 @@ class RPSWorld{
         expect(choice).to.be.eq(`#${outcome}`)
     }
     
-    game(human,ai){
-        if(human === ai){
-            return 'The game is a tie'
-        } else if(human === 'Rock' && ai === 'Scissor'){
-            return 'You have won'
-        } else if(human === 'Scissor' && ai === 'Paper'){
-            return  'You have won'
-        } else if(human === 'Paper' && ai === 'Rock'){
-            return 'You have won'
-        } else {
-            return 'You have lost'
+
+    async theResult(){
+        const computerrock = this.page.$('#computerrock')
+        const computerpaper = this.page.$('#computerpaper')
+        const computerscissors = this.page.$('#computerscissors')
+        const choice = '#result'
+        const result = await this.page.evaluate(choice => choice.textContent, choice)
+        if(computerrock === {}){
+            expect(result).to.be.eq('The game is a tie')
+        }else if(computerpaper === {}){
+            expect(result).to.be.eq('You have lost')
+        }if(computerscissors === {}){
+            expect(result).to.be.eq('You have won')
         }
-    }
-
-    async aiChosen(ai,rock,paper,scissor){
-        const possibilites = [rock, paper, scissor]
-        const inputSelector = `#${ai}`
-        let chosen = await this.page.$(inputSelector.toLowerCase())
-        let text = await this.page.evaluate(chosen => chosen.textContent, chosen)
-        expect(possibilites).to.include(text)
-    }
-
-    async theResult(choice){
-        const inputSelector = `#${choice}`
-        await this.page.click(inputSelector.toLocaleLowerCase())
-        let result = await this.page.$('#result')
-        let text = await this.page.evaluate(result => result.textContent, result)
-        expect(text).to.be.a('string')
     }
 
 }

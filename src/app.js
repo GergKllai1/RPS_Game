@@ -11,11 +11,11 @@ const rockPaperScissor = document.addEventListener('DOMContentLoaded', () => {
     const randomizer = () => {
         random = Math.floor(Math.random()*3)
         if(random === 0){
-            computer.innerHTML = "<img src='images/rock.jpeg' alt='no image'>"
+            computer.innerHTML = "<img id='computerrock' src='images/rock.jpeg' alt='no image'>"
         }else if(random === 1){
-            computer.innerHTML = "<img src='images/paper.jpg' alt='no image'>"
+            computer.innerHTML = "<img id='computerpaper' src='images/paper.jpg' alt='no image'>"
         }else{
-            computer.innerHTML = "<img src='images/scissors.jpg' alt='no image'>"
+            computer.innerHTML = "<img id='computerscissors' src='images/scissors.jpg' alt='no image'>"
         }
     };
     const evaluate = () => {
