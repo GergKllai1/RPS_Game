@@ -17,18 +17,11 @@ class RPSWorld{
         await this.browser.close()
     }
 
-    async selectItem(selection, outcome){
-        const choice = `#${selection}`
-        await this.page.evaluate(choise => choice.textContent, choice)
-        expect(choice).to.be.eq(`#${outcome}`)
-    };
-
     async clickOn(choice){
         const inputSelector = `#${choice}`
         await this.page.click(inputSelector)
     }
     
-
     async theResult(){
         const computerrock = await this.page.$('#computerrock')
         const computerpaper = await this.page.$('#computerpaper')
@@ -42,7 +35,27 @@ class RPSWorld{
         }else if(computerscissors !== null){
             expect(results).to.be.eq('You have won')
         } 
+    };
+
+    async theScore(){
+        const computer = await this.page.$('#computerscore')
+        const computerscore = await this.page.evaluate(computer => computer.textContent, computer)
+        const human = await this.page.$('#humanscore')
+        const humanscore = await this.page.evaluate(human => human.textContent, human)
+        const inputSelector = await this.page.$('#result')
+        const result = await this.page.evaluate(inputSelector => inputSelector.textContent, inputSelector)
+        if(result === 'The game is a tie'){
+            expect(computerscore).to.be.eq('0')
+            expect(humanscore).to.be.eq('0')
+        }else if(result === 'You have won'){
+            expect(computerscore).to.be.eq('0')
+            expect(humanscore).to.be.eq('1')
+        }if(result === 'You have lost'){
+            expect(computerscore).to.be.eq('1')
+            expect(humanscore).to.be.eq('0')
+        }
     }
+
 }
 
 setWorldConstructor(RPSWorld)

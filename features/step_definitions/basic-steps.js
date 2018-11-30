@@ -16,6 +16,9 @@ Then('I should see the results', async function () {
     return await this.theResult()
 
 });
+Then('the score increases', async function () {
+    return await this.theScore();
+});
 
 After(async function() {
     return await this.closeHomePage()
