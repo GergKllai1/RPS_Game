@@ -2,6 +2,8 @@ body{
     background-color: #FFF1C9;
     margin: 0;
     text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 110%;
 }
 
 #title{
@@ -17,37 +19,46 @@ body{
 }
 
 #score{
-    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr, 1fr
 }
-.choicetitle{
-    text-align: center;
+#human{
+    display: grid;
+    grid-column: 1/2;
+}
+#comp{
+    display: grid;
+    grid-column: 2/3;
 }
 
-.humanchoice{
+#choice{
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+}
+#humanchoice{
+    display: grid;
+    grid-column: 1/2;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.humanchoice img{
+#humanchoice img{
     height: 120px;
-    width: auto;
+    width: 110px;
     margin: 10px;
     border-radius: 50%;
     transition: 0.2s;
     padding: 3px;
-
 }
-
-.humanchoice img:hover{
+#humanchoice img:hover{
     cursor: pointer;
     border: 3px solid burlywood;
 }
-
-#computer{
-    display: flex;
-    justify-content: center;
+#computerchoice{
+    display: grid;
+    grid-column: 2/3;
 }
-
 #computer img{
     height: 120px;
     width: auto;
@@ -55,4 +66,8 @@ body{
     border-radius: 50%;
     transition: 0.2s;
 
+}
+
+#result{
+    font-size: 24px;
 }
