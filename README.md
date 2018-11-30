@@ -1,4 +1,4 @@
-#Rock Paper Scissor Game
+# Rock Paper Scissor Game
 ##### Created by Gregory Kallai
 
 ### Instruction:
