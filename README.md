@@ -2,6 +2,8 @@
 ##### Created by Gregory Kallai
 
 ### Instruction:
+- The game can be reached on this website:
+    - https://gergkllai1.github.io/RPS_Game/
 - Choose from either rock, paper or scissors
 - Then you can see the choice of the computer
 - Read the results of the game
